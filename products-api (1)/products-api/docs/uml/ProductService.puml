@@ -1,0 +1,34 @@
+@startuml
+
+class Product {
+    - Long id
+    - String name
+    - double price
+    + getId()
+    + getName()
+    + getPrice()
+}
+
+class ProductService {
+    - List<Product> products
+    + getAllProducts()
+    + getProductById(id)
+    + addProduct(product)
+    + updateProduct(id, product)
+    + deleteProduct(id)
+    + findByName(name)
+}
+
+class ProductController {
+    + getAllProducts()
+    + getProductById(id)
+    + createProduct(product)
+    + updateProduct(id, product)
+    + deleteProduct(id)
+    + searchProducts(name)
+}
+
+ProductController ..> ProductService : uses
+ProductService --> Product : manages
+
+@enduml
